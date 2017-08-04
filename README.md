@@ -16,3 +16,7 @@ Run tests:
 ```bash
 $ npm test
 ```
+
+At http://localhost:8000/documentation you can see all the endpoints.
+
+The books require a running mongoDB (which is not included).
