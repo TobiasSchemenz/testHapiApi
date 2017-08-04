@@ -34,14 +34,14 @@ describe('API', () => {
     });
 
     it('Known route should return http status 200', done => {
-        server.inject('/v2', response => {
+        server.inject('/', response => {
             expect(response.statusCode).to.equal(200);
             done();
         });
     });
 
     it('Restricted route should return http status 401 for anonymous user', done => {
-        server.inject('/v2/restricted', response => {
+        server.inject('/restricted', response => {
             expect(response.statusCode).to.equal(401);
             done();
         });
@@ -50,7 +50,7 @@ describe('API', () => {
     it('Restricted route should return http status 200 for authenticated user', done => {
         var options = {
             method: 'GET',
-            url: '/v2/restricted',
+            url: '/restricted',
             headers: {
                 'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkFudGhvbnkgVmFsaWQgVXNlciIsImlhdCI6MTQyNTQ3MzUzNX0.KA68l60mjiC8EXaC2odnjFwdIDxE__iDu5RwLdN1F2A',
                 'Content-Type': 'application/json; charset=utf-8'
@@ -63,7 +63,7 @@ describe('API', () => {
     });
 
     it('Unknown route should return http status 404', done => {
-        server.inject('/v2/unkownroute', response => {
+        server.inject('/unkownroute', response => {
             expect(response.statusCode).to.equal(404);
             done();
         });
